@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .operation {
+            margin-bottom: 20px;
+        }
+        .operation input {
+            width: 80px;
+            padding: 5px;
+            margin: 5px;
+            text-align: center;
+        }
+        .operation span {
+            font-size: 20px;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Calculator</h1>
+    <div class="operation">
+        <input type="number" id="add1" placeholder="0">
+        <span>+</span>
+        <input type="number" id="add2" placeholder="0">
+        <span>=</span>
+        <input type="text" id="addResult" readonly>
+        <button onclick="calculate('add')">Calculate</button>
+    </div>
+    <div class="operation">
+        <input type="number" id="sub1" placeholder="0">
+        <span>-</span>
+        <input type="number" id="sub2" placeholder="0">
+        <span>=</span>
+        <input type="text" id="subResult" readonly>
+        <button onclick="calculate('sub')">Calculate</button>
+    </div>
+    <div class="operation">
+        <input type="number" id="mul1" placeholder="0">
+        <span>*</span>
+        <input type="number" id="mul2" placeholder="0">
+        <span>=</span>
+        <input type="text" id="mulResult" readonly>
+        <button onclick="calculate('mul')">Calculate</button>
+    </div>
+    <div class="operation">
+        <input type="number" id="div1" placeholder="0">
+        <span>/</span>
+        <input type="number" id="div2" placeholder="0">
+        <span>=</span>
+        <input type="text" id="divResult" readonly>
+        <button onclick="calculate('div')">Calculate</button>
+    </div>
+    <script>
+        function calculate(operation) {
+            let num1 = document.getElementById(operation + '1').value;
+            let num2 = document.getElementById(operation + '2').value;
+            let result;
+
+            num1 = parseFloat(num1);
+            num2 = parseFloat(num2);
+
+            if (operation === 'add') {
+                result = num1 + num2;
+            } else if (operation === 'sub') {
+                result = num1 - num2;
+            } else if (operation === 'mul') {
+                result = num1 * num2;
+            } else if (operation === 'div') {
+                result = num2 !== 0 ? num1 / num2 : 'Error';
+            }
+
+            document.getElementById(operation + 'Result').value = result;
+        }
+        alert("This is a simple calculator")
+    </script>
+</body>
+</html>
